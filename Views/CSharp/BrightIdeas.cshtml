@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Bright Ideas</title>
+    </head>
+    <body>
+        <h1>Hi, @ViewBag.InSession.Alias!</h1>
+        <a href="Logout", "LoginReg">Logout</a>
+        <br>
+        <p>@TempData["ideaerror"]</p>
+        <form action="AddIdea" method="post">
+            <textarea name="IdeaText" id="ideatext" cols="30" rows="10" placeholder="Post something here"></textarea>
+            <input type="submit" value="Idea!">
+        </form>
+
+        @{
+            foreach (var idea in ViewBag.AllIdeas){
+                int counter = 0;
+                foreach (var thinker in ViewBag.AllThinkers){
+                    if (thinker.UserId == idea.UserId){
+                        if (counter < 1){
+                            <h4><a href="UserProfile/@thinker.UserId">@thinker.Alias</a> says:</h4>
+                            counter ++;
+                        }
+                    }
+                }
+            <p>@idea.IdeaText</p>
+
+            if (@ViewBag.InSession.UserId == idea.UserId){
+                <a href="Delete/@idea.IdeaId">Delete</a>
+            }
+            bool HasLiked = false;
+            foreach (var like in idea.Likes){
+                if (like.UserId == @ViewBag.InSession.UserId){
+                    HasLiked = true;
+                }
+            }
+
+            if (HasLiked == false){
+                <a href="AddLike/@idea.IdeaId">Like</a>
+            }
+            <p><a href="LikeStatus/@idea.IdeaId">@idea.Likes.Count people</a> like this.</p>
+            }
+        }
+
+    </body>
+</html>

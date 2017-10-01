@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Like Status</title>
+    </head>
+    <body>
+        <a href="/BrightIdeas">Bright Ideas</a>
+        <a href="/Logout", "LoginReg">Logout</a>
+        <br>
+        <h1>Name: @ViewBag.ThisUser.Name</h1>
+        <h2>Alias: @ViewBag.ThisUser.Alias</h2>
+        <h2>Email: @ViewBag.ThisUser.Email</h2>
+        <br>
+        <hr>
+        <br>
+        <h2>Total Number of Posts: @ViewBag.ThisUser.Ideas.Count</h2>
+        <h2>Total Number of Likes: @ViewBag.ThisUser.Likes.Count</h2>
+    </body>
+</html>

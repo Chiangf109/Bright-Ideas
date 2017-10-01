@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Like Status</title>
+    </head>
+    <body>
+        <a href="/BrightIdeas">Bright Ideas</a>
+        <a href="Logout", "LoginReg">Logout</a>
+        <br>
+
+        <h4><a href="UserProfile/@ViewBag.Thinker.UserId">@ViewBag.Thinker.Alias</a> says:</h4>
+        <p>@ViewBag.ThisIdea.IdeaText</p>
+        
+        <h3>People who liked this post:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Alias</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var like in ViewBag.ThisIdea.Likes){
+                        <tr>
+                            <td>@like.User.Alias</td>
+                            <td>@like.User.Name</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+
+    </body>
+</html>

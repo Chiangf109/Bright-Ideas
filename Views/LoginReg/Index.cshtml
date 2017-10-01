@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Login/Registration</title>
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+            <!--<p>@TempData["warning"]</p>-->
+            <p>@TempData["error"]</p>
+            @{
+                foreach(var error in ViewBag.errors)
+                {
+                    if(@error.Errors.Count > 0)
+                    {
+                        <p>@error.Errors[0].ErrorMessage</p>
+                    }
+                }
+            }
+
+            <h2>Register</h2>
+            <form action="Register" method="post">
+                Name: <input type="text" name="Name">
+                <br>
+                Alias: <input type="text" name="Alias">
+                <br>
+                Email: <input type="text" name="Email">
+                <br>
+                Password: <input type="password" name="Password">
+                <br>
+                <p>Password need to be at least 8 characters</p>
+                <br>
+                Confirm password: <input type="password" name="PasswordConf">
+                <br>
+                <input type="submit" value="Register">
+            </form>
+
+            <h2>Login</h2>
+            <form action="Login" method="post">
+                Email Address: <input type="text" name="Email">
+                <br>
+                Password: <input type="password" name="Password">
+                <br>
+                <input type="submit" value="Login">
+            </form>
+    </body>
+</html>
